@@ -1,6 +1,7 @@
 class Rover
   attr_accessor :coordinate_x, :coordinate_y, :direction
-  COMPASS = ["N", "E", "S", "W", "N"]
+  COMPASS_1 = ["N", "E", "S", "W", "N"]
+  COMPASS_2 = ["N", "W", "S", "E", "N"]
 
   def initialize(coordinate_x, coordinate_y, direction)
     @coordinate_x   = coordinate_x
@@ -21,13 +22,13 @@ class Rover
   end
 
   def turn_left
-    current_direction_index = COMPASS.index(@direction)
-    @direction              = COMPASS[current_direction_index - 1]
+    current_direction_index = COMPASS_2.index(@direction)
+    @direction              = COMPASS_2[current_direction_index + 1]
   end
 
   def turn_right
-    current_direction_index = COMPASS.index(@direction)
-    @direction              = COMPASS[current_direction_index + 1]
+    current_direction_index = COMPASS_1.index(@direction)
+    @direction              = COMPASS_1[current_direction_index + 1]
   end
 
   def explore(instructions)
