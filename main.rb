@@ -1,7 +1,7 @@
 require "./lib/rover.rb"
 
 
-puts "Welcome to the Mars rover simulator, press enter to start."
+puts "Welcome to the Mars rover simulator, press to start."
 gets
 puts "Select current location of rover-1 by entering number for x coordinate."
 input_coordinate_x = gets.chomp()
