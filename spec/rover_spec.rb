@@ -37,31 +37,52 @@ describe Rover do
     end
   end
 
-  describe "explore" do
+  describe "#explore" do
     it "gives the instructions to move and rotate the rover along its exploring path" do
       rover = Rover.new(0, 0, "N")
-      expect{rover.explore("M""M""M""M""R")}.to change{rover.coordinate_x && rover.coordinate_y && rover.direction}.to(0 && 4 && "E")
+      expect{rover.explore("MMMM")}.to change{rover.coordinate_y}.to(4)
     end
-  end
 
-  describe "explore" do
     it "gives the instructions to move and rotate the rover along its exploring path" do
-      rover = Rover.new(0, 0, "N")
-      expect{rover.explore("R""M""M""L""M""L")}.to change{rover.coordinate_x && rover.coordinate_y && rover.direction}.to(2 && 1 && "W")
+      rover = Rover.new(0, 0, "E")
+      expect{rover.explore("MMMM")}.to change{rover.coordinate_x}.to(4)
     end
-  end
 
-  describe "explore" do
     it "gives the instructions to move and rotate the rover along its exploring path" do
       rover = Rover.new(0, 0, "N")
-      expect{rover.explore("L""L""L")}.to change{rover.direction}.to("E")
+      expect{rover.explore("L")}.to change{rover.direction}.to("W")
     end
-  end
 
-  describe "explore" do
     it "gives the instructions to move and rotate the rover along its exploring path" do
       rover = Rover.new(0, 0, "N")
-      expect{rover.explore("R""R")}.to change{rover.direction}.to("S")
+      expect{rover.explore("MMMRMMM")}.to change{rover.coordinate_y}.to(3) &&
+      change{rover.coordinate_x}.to(3) &&
+      change{rover.direction}.to("E")
+    end
+
+    it "gives the instructions to move and rotate the rover along its exploring path" do
+      rover = Rover.new(0, 0, "N")
+      expect{rover.explore("MMMLMMM")}.to change{rover.coordinate_y}.to(3) &&
+      change{rover.coordinate_x}.to(-3) &&
+      change{rover.direction}.to("W")
+    end
+
+    it "gives the instructions to move and rotate the rover along its exploring path" do
+      rover = Rover.new(0, 0, "N")
+      expect{rover.explore("RRMMMRMMM")}.to change{rover.coordinate_y}.to(-3) &&
+      change{rover.coordinate_x}.to(-3) &&
+      change{rover.direction}.to("W")
+    end
+
+    it "gives the instructions to move and rotate the rover along its exploring path" do
+      rover = Rover.new(0, 0, "N")
+      expect{rover.explore("LLL")}.to change{rover.direction}.to("E")
+    end
+
+    it "gives the instructions to move and rotate the rover along its exploring path" do
+      rover = Rover.new(0, 0, "N")
+      expect{rover.explore("RRMM")}.to change{rover.direction}.to("S") &&
+      change{rover.coordinate_y}.to(-2)
     end
   end
 end
